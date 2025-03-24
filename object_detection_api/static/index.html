@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crater Detection System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <section class="hero" id="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Crater Detection System</h1>
+                <p>Advanced image analysis using sophisticated algorithms to detect and classify craters on planetary surfaces with high precision.</p>
+                <button class="explore-btn" id="exploreBtn">Explore</button>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="container">
+                <h2>Upload Image for Crater Detection</h2>
+                <div class="upload-container" id="drop-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Drag & Drop Crater Image Here</h3>
+                    <p>or</p>
+                    <label for="file-input" class="btn">Browse Files</label>
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <p class="file-limit">Maximum file size: 2MB (JPG, PNG)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section hidden" id="results-section">
+            <div class="container">
+                <h2>Detection Results</h2>
+                <div class="loading-spinner" id="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Analyzing image for craters...</p>
+                </div>
+                <div class="results-container hidden" id="results-container">
+                    <div class="image-comparison">
+                        <div class="original-image">
+                            <h3>Original Image</h3>
+                            <img id="original-image" src="" alt="Original Image">
+                        </div>
+                        <div class="detected-image">
+                            <h3>Detected Craters</h3>
+                            <img id="detected-image" src="" alt="Detected Craters">
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="download-btn" class="btn"><i class="fas fa-download"></i> Download Result</button>
+                        <button id="new-analysis-btn" class="btn"><i class="fas fa-redo"></i> New Analysis</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Crater Detection System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/static/scripts.js"></script>
+</body>
+</html>
