@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click event listener to the button
     if (exploreBtn) {
         exploreBtn.addEventListener('click', function() {
-            // Scroll to the bottom of the page smoothly
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
+            // Scroll to the steps section smoothly
+            const stepsSection = document.querySelector('.steps-section');
+            if (stepsSection) {
+                stepsSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 });
@@ -241,4 +241,3 @@ buttons.forEach(button => {
 window.addEventListener('load', () => {
     document.querySelector('.upload-container').classList.add('slide-in');
 });
-

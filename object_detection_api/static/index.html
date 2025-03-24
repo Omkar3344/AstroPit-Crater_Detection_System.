@@ -13,11 +13,48 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1>Crater Detection System</h1>
-                <p>Advanced image analysis using sophisticated algorithms to detect and classify craters on planetary surfaces with high precision.</p>
+                <p>Advanced image analysis using sophisticated algorithms to detect craters on planetary surfaces with high precision.</p>
                 <button class="explore-btn" id="exploreBtn">Explore</button>
             </div>
         </section>
     </header>
+
+    <section class="steps-section">
+        <div class="steps-overlay"></div>
+        <div class="hero-content">
+            <h1>How It Works</h1>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Your Image</h3>
+                        <p>Select a high-resolution image of a planetary surface (Mars or Moon) by dragging and dropping or using the browse button.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Processing</h3>
+                        <p>Our advanced AI algorithm analyzes the image to identify and mark potential crater formations.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Review Results</h3>
+                        <p>Examine the detected craters highlighted in the processed image with their size and position data.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Download</h3>
+                        <p>Save the analyzed image for your research or further analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main>
         <section class="upload-section">
@@ -70,5 +107,21 @@
     </footer>
 
     <script src="/static/scripts.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            console.log("Checking for missing images...");
+            const images = [
+                '/static/uploads/image1.jpg',
+                '/static/uploads/image4.jpg'
+            ];
+            
+            images.forEach(src => {
+                const img = new Image();
+                img.onerror = () => console.error(`404 Error: Image not found at ${src}`);
+                img.onload = () => console.log(`Image loaded successfully: ${src}`);
+                img.src = src;
+            });
+        });
+    </script>
 </body>
 </html>

@@ -114,8 +114,9 @@ body {
 
 /* Upload Section */
 .upload-section {
+    position: relative;
     padding: 80px 0;
-    height: 95vh;
+    min-height: 95vh; /* Changed from height to min-height */
     background-image: url('/static/uploads/image4.jpg');
     background-size: cover;
     color: white;
@@ -123,6 +124,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Add clear margins to prevent overlap */
+    margin: 0;
+    z-index: 1; /* Ensure proper stacking */
 }
 
 .upload-section h2 {
@@ -377,6 +381,143 @@ body {
     }
 }
 
+/* Steps Section - Fixed Version */
+.steps-section {
+    position: relative;
+    padding: 80px 0;
+    min-height: 100vh;
+    background-color: #000000 !important;
+    background-image: none !important;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Changed from flex-start to center */
+    justify-content: center;
+    margin: 0;
+    z-index: 1; /* Ensure proper stacking */
+}
+
+/* Adjust the container top margin for better positioning */
+.steps-section .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 50px auto 0; /* Added top margin of 50px */
+    padding: 0 2rem;
+}
+
+/* If you're using hero-content instead of container */
+.steps-section .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto; /* Removed top margin */
+    padding: 30px;
+}
+
+.steps-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Reduced opacity */
+    z-index: 1;
+}
+
+.steps-section h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Steps Container - Fixed for even layout */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Fixed 2 columns */
+    gap: 2.5rem; /* Consistent gap */
+    max-width: 1100px; /* Slightly reduced for better proportions */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Enhance step styling for better visibility and consistency */
+.step {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: flex-start;
+    height: 100%; /* Ensure consistent height */
+    margin: 0; /* Remove bottom margin that was causing unevenness */
+}
+
+/* Make the step content take full width */
+.step-content {
+    flex: 1;
+}
+
+/* Better mobile responsiveness */
+@media (max-width: 992px) {
+    .steps-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        max-width: 600px;
+    }
+    
+    .step {
+        margin-bottom: 1.5rem; /* Add spacing between steps on mobile */
+    }
+}
+
+.step-number {
+    background-color: #ff6b6b;
+    color: white;
+    width: 46px; /* Slightly larger */
+    height: 46px; /* Slightly larger */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    font-weight: bold;
+    margin-right: 1.5rem; /* Increased spacing */
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    color: #ff8585; /* Made slightly brighter for better visibility */
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.3); /* Added subtle glow */
+    font-size: 1.4rem; /* Increased font size */
+    margin-bottom: 1rem; /* Added space below heading */
+}
+
+.step-content p {
+    color: #ffffff; /* Pure white for better readability on black */
+    margin: 0;
+    line-height: 1.8; /* Increased line height */
+    font-size: 1.05rem; /* Slightly larger text */
+    color: #ddd;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+    .steps-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .step {
+        padding: 1.5rem;
+    }
+    
+    .steps-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+}
 
 /* Footer */
 footer {
