@@ -1,9 +1,9 @@
-# Martian & Lunar Crater Detection - Quick Start
+# Crater Detection System - Quick Start
 ### This guide contains all the commands needed to run the Martian & Lunar Crater Detection project.
 
 ## Setup Commands
 ### Clone the repository
-git clone https://github.com/yourusername/Martian_Lunar_Crater_Detection.git
+git clone [https://github.com/Omkar3344/Crater_Detection_System].git
 cd Martian_Lunar_Crater_Detection
 
 ### Create and activate virtual environment
