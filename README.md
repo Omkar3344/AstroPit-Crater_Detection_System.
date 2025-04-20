@@ -21,15 +21,12 @@ python3 -m venv venv
 ### Activate virtual environment
 source venv/bin/activate
 
-## Install required packages
-pip install -r requirements.txt
-
 ## Run the application
 ### Navigate to the API directory
 cd object_detection_api
 
+## Install required packages
+pip install -r requirements.txt
+
 ### Load the models
 python main.py
-
-### Start the FastAPI server
-uvicorn main:app --reload --log-level debug
