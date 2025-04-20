@@ -669,7 +669,7 @@ if __name__ == "__main__":
     # Start the uvicorn server
     uvicorn.run(
         "main:app",
-        host="localhost",  # Changed from "0.0.0.0" to "localhost"
+        host="0.0.0.0",  # Changed from "0.0.0.0" to "localhost"
         port=8000,
         reload=True,
         log_level="debug"
