@@ -3,7 +3,7 @@
 
 ## Setup Commands
 ### Clone the repository
-git clone https://github.com/Omkar3344/Crater_Detection_System.git
+git clone [https://github.com/Omkar3344/Crater_Detection_System.git]
 cd Martian_Lunar_Crater_Detection
 
 ### Create and activate virtual environment
