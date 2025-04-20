@@ -1,127 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crater Detection System</title>
+    <title>Martian & Lunar Crater Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <section class="hero" id="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Crater Detection System</h1>
-                <p>Advanced image analysis using sophisticated algorithms to detect craters on planetary surfaces with high precision.</p>
-                <button class="explore-btn" id="exploreBtn">Explore</button>
-            </div>
-        </section>
-    </header>
+    <!-- Cosmic elements for background -->
+    <div class="cosmic-elements"></div>
+    <div class="satellite"></div>
+    <div class="medium-planet"></div>
+    <div class="small-moon"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="cosmic-dust"></div>
 
-    <section class="steps-section">
-        <div class="steps-overlay"></div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-space-bg">
+            <div class="star star-1"></div>
+            <div class="star star-2"></div>
+            <div class="star star-3"></div>
+            <div class="star star-4"></div>
+            <div class="star star-5"></div>
+            <div class="star star-6"></div>
+            <div class="planet planet-mars"></div>
+            <div class="planet planet-moon"></div>
+            <div class="planet planet-distant"></div>
+            <div class="orbital-ring"></div>
+            <div class="satellite-hero"></div>
+            <div class="hero-nebula"></div>
+
+            <!-- Add these elements inside your hero-space-bg div -->
+            <div class="orbital-system">
+                <div class="sun"></div>
+                <div class="orbit orbit-1">
+                    <div class="planet planet-mercury"></div>
+                </div>
+                <div class="orbit orbit-2">
+                    <div class="planet planet-venus"></div>
+                </div>
+                <div class="orbit orbit-3">
+                    <div class="planet planet-earth">
+                        <div class="moon-orbit">
+                            <div class="moon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="asteroid-belt"></div>
+            <div class="comet"></div>
+            <div class="galaxy-spiral"></div>
+        </div>
         <div class="hero-content">
-            <h1>How It Works</h1>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Upload Your Image</h3>
-                        <p>Select a high-resolution image of a planetary surface (Mars or Moon) by dragging and dropping or using the browse button.</p>
+            <h1>Martian & Lunar Crater Detection</h1>
+            <p>Advanced planetary surface analysis with YOLOv8</p>
+            <a href="#upload" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>Upload Your Image</h2>
+            <p>Upload a planetary surface image to detect craters</p>
+            
+            <div class="upload-container" id="upload-area">
+                <i class="upload-icon fas fa-cloud-upload-alt"></i>
+                <h3>Upload File</h3>
+                <p>Drag and drop a file here or click to browse</p>
+                <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.gif" style="display: none;">
+                <button class="btn browse-btn" id="browse-btn">Browse Files</button>
+                <button class="btn upload-btn" id="upload-btn" disabled>Detect Craters</button>
+                <div id="file-preview" class="file-preview"></div>
+                <p class="file-limit">Maximum file size: 2MB for images</p>
+            </div>
+        </div>
+        
+        <!-- Scanning Overlay -->
+        <div class="scanning-overlay" style="display: none;">
+            <div class="scanning-grid"></div>
+            <div class="scanning-text">
+                <span>Analyzing Planetary Surface</span>
+                <div class="scanning-dots">
+                    <span>.</span><span>.</span><span>.</span>
+                </div>
+            </div>
+            <div class="scan-line"></div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results-section hidden">
+        <div class="container">
+            <h2>Detection Results</h2>
+            <div id="result-status" class="result-status">
+                <span id="result-message" class="result-message">Processing...</span>
+            </div>
+            
+            <!-- Image Results -->
+            <div id="image-results" class="result-content hidden">
+                <div class="image-row">
+                    <div class="original-image">
+                        <h3>Original Image</h3>
+                        <div class="image-container">
+                            <img id="original-image" src="" alt="Original Image">
+                        </div>
+                        <a id="download-original" class="btn download-btn" download>
+                            <i class="fas fa-download"></i> Download Original
+                        </a>
+                    </div>
+                    <div class="detected-image">
+                        <h3>Detected Craters</h3>
+                        <div class="image-container">
+                            <img id="result-image" src="" alt="Detection Results">
+                        </div>
+                        <a id="download-result" class="btn download-btn" download>
+                            <i class="fas fa-download"></i> Download Result
+                        </a>
                     </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Processing</h3>
-                        <p>Our advanced AI algorithm analyzes the image to identify and mark potential crater formations.</p>
-                    </div>
+            </div>
+            
+            <div class="result-actions">
+                <button id="new-detection-btn" class="btn">
+                    <i class="fas fa-upload"></i> Analyze Another Image
+                </button>
+            </div>
+
+            <!-- Add this in your results section -->
+            <div class="action-buttons">
+                <!-- Your existing buttons -->
+                <button id="view-3d-btn" class="btn action-btn">
+                    <i class="fas fa-cube"></i> View in 3D
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Data Section -->
+    <section id="technical-data" class="technical-data-section hidden">
+        <div class="container">
+            <h2>Technical Data Analysis</h2>
+            <p>Detailed analysis of detected craters in structured format</p>
+            
+            <div class="data-controls">
+                <button id="copy-json-btn" class="btn small-btn">
+                    <i class="fas fa-copy"></i> Copy JSON
+                </button>
+                <button id="download-json-btn" class="btn small-btn">
+                    <i class="fas fa-download"></i> Download Data
+                </button>
+                <button id="toggle-format-btn" class="btn small-btn">
+                    <i class="fas fa-code"></i> Toggle Format
+                </button>
+            </div>
+            
+            <div class="json-container">
+                <pre id="crater-data-json">No crater data available yet.</pre>
+            </div>
+            
+            <div class="statistics-row">
+                <div class="stat-box">
+                    <h3>Crater Count</h3>
+                    <div class="stat-value" id="crater-count">0</div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Review Results</h3>
-                        <p>Examine the detected craters highlighted in the processed image with their size and position data.</p>
-                    </div>
+                <div class="stat-box">
+                    <h3>Average Size</h3>
+                    <div class="stat-value" id="avg-size">0 px</div>
                 </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Download</h3>
-                        <p>Save the analyzed image for your research or further analysis.</p>
-                    </div>
+                <div class="stat-box">
+                    <h3>Confidence</h3>
+                    <div class="stat-value" id="avg-confidence">0%</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <main>
-        <section class="upload-section">
-            <div class="container">
-                <h2>Upload Image for Crater Detection</h2>
-                <div class="upload-container" id="drop-area">
-                    <div class="upload-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <h3>Drag & Drop Crater Image Here</h3>
-                    <p>or</p>
-                    <label for="file-input" class="btn">Browse Files</label>
-                    <input type="file" id="file-input" accept="image/*" hidden>
-                    <p class="file-limit">Maximum file size: 2MB (JPG, PNG)</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="results-section hidden" id="results-section">
-            <div class="container">
-                <h2>Detection Results</h2>
-                <div class="loading-spinner" id="loading-spinner">
-                    <div class="spinner"></div>
-                    <p>Analyzing image for craters...</p>
-                </div>
-                <div class="results-container hidden" id="results-container">
-                    <div class="image-comparison">
-                        <div class="original-image">
-                            <h3>Original Image</h3>
-                            <img id="original-image" src="" alt="Original Image">
-                        </div>
-                        <div class="detected-image">
-                            <h3>Detected Craters</h3>
-                            <img id="detected-image" src="" alt="Detected Craters">
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button id="download-btn" class="btn"><i class="fas fa-download"></i> Download Result</button>
-                        <button id="new-analysis-btn" class="btn"><i class="fas fa-redo"></i> New Analysis</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- 3D Visualization Section -->
+    <section id="visualization-3d" class="visualization-section hidden">
         <div class="container">
-            <p>© 2025 Crater Detection System. All rights reserved.</p>
+            <h2>3D Crater Visualization</h2>
+            <div class="viz-controls">
+                <button id="orbital-flight" class="btn small-btn">Orbital Flight</button>
+                <button id="reset-camera" class="btn small-btn">Reset View</button>
+            </div>
+            <div class="viz-container">
+                <div id="loading-3d" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <span>Generating 3D model...</span>
+                </div>
+                <div id="crater-3d-container"></div>
+            </div>
+            <div class="viz-info">
+                <p>Interactive 3D model based on crater detection data. Use mouse to rotate, scroll to zoom, and right-click to pan.</p>
+                <p><span class="crater-count-3d">0</span> craters visualized in 3D space.</p>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="/static/scripts.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-            console.log("Checking for missing images...");
-            const images = [
-                '/static/uploads/image1.jpg',
-                '/static/uploads/image4.jpg'
-            ];
-            
-            images.forEach(src => {
-                const img = new Image();
-                img.onerror = () => console.error(`404 Error: Image not found at ${src}`);
-                img.onload = () => console.log(`Image loaded successfully: ${src}`);
-                img.src = src;
-            });
-        });
-    </script>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About the Technology</h2>
+            <div class="tech-details">
+                <div class="tech-item">
+                    <i class="fas fa-brain tech-icon"></i>
+                    <h3>YOLOv8 AI Model</h3>
+                    <p>Utilizing state-of-the-art YOLOv8 object detection for accurate crater identification</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-globe tech-icon"></i>
+                    <h3>Planetary Surface Analysis</h3>
+                    <p>Specialized filters detect and validate planetary surface characteristics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFExporter.min.js"></script>
+    <script src="/static/crater3d.js"></script>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>
