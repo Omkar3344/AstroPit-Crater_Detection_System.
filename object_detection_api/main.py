@@ -659,3 +659,18 @@ def formatJSON(json):
         lambda match: f'<span class="json-{match.group(0)}">{match.group(0)}</span>',
         jsonString
     )
+
+# Add this at the bottom of main.py
+if __name__ == "__main__":
+    import uvicorn
+    
+    print("Models loaded. Starting FastAPI server...")
+    
+    # Start the uvicorn server
+    uvicorn.run(
+        "main:app",
+        host="localhost",  # Changed from "0.0.0.0" to "localhost"
+        port=8000,
+        reload=True,
+        log_level="debug"
+    )
