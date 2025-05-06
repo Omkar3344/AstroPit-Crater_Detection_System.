@@ -670,27 +670,12 @@ section::after {
     margin: 0 auto;
     padding: 0 20px;
     text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 3.8rem;
-    margin-bottom: 20px;
-    background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
-}
-
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    color: #d1d5db;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin-top: -80px; /* Add negative margin to shift content up */
 }
 
 /* Add a shooting star effect specifically for the hero section */
@@ -1641,6 +1626,33 @@ section::after {
     .upload-container {
         padding: 20px;
     }
+
+    .hero-content h1 {
+        font-size: 1.7rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hero-content {
+        margin-top: -60px; /* Less shift on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-content {
+        margin-top: -40px; /* Even less shift on small screens */
+    }
 }
 
 /* Steps Section - Fixed Version */
@@ -2113,4 +2125,91 @@ section::after {
     color: var(--text-color);
     font-size: 14px;
     margin: 0;
+}
+
+/* AstroPit Brand Styling */
+.brand-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #7ee2ff, #ffffff, #7ee2ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(126, 226, 255, 0.7), 0 0 40px rgba(126, 226, 255, 0.4);
+    margin-bottom: 1.5rem;
+    letter-spacing: 6px;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.4s ease;
+    animation: pulsate 1s infinite alternate;
+}
+
+/* Create a nebula-like effect behind the text */
+.brand-logo::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(
+        circle at center,
+        rgba(126, 226, 255, 0.15),
+        rgba(110, 79, 255, 0.1),
+        transparent 70%
+    );
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.8;
+}
+
+/* Add horizontal line under the logo */
+.brand-logo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(126, 226, 255, 0.5), 
+        rgba(255, 255, 255, 0.8), 
+        rgba(126, 226, 255, 0.5), 
+        transparent
+    );
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(126, 226, 255, 0.7);
+}
+
+/* Gentle pulsating animation */
+@keyframes pulsate {
+    0% {
+        text-shadow: 0 0 20px rgba(126, 226, 255, 0.7), 0 0 40px rgba(126, 226, 255, 0.4);
+        transform: scale(1);
+    }
+    100% {
+        text-shadow: 0 0 25px rgba(126, 226, 255, 0.9), 0 0 50px rgba(126, 226, 255, 0.6);
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .brand-logo {
+        font-size: 3.8rem;
+        letter-spacing: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logo {
+        font-size: 3rem;
+        letter-spacing: 3px;
+        padding: 0.3rem 0.8rem;
+    }
 }
